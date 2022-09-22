@@ -42,4 +42,18 @@ public class Movie {
     )
     @JsonIgnoreProperties("movies")
     private Collection<Genre> genres;
+
+    @ManyToMany(
+            fetch = FetchType.LAZY,
+            cascade = {CascadeType.DETACH, CascadeType.REFRESH},
+            targetEntity = Actor.class)
+    @JoinTable(
+            name="movie_actor",
+            joinColumns = {@JoinColumn(name = "movie_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name="actor_id", nullable = false, updatable = false)},
+            foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT),
+            inverseForeignKey = @ForeignKey(ConstraintMode.CONSTRAINT)
+    )
+    @JsonIgnoreProperties("movies")
+    private Collection<Actor> actors;
 }
