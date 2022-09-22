@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Collection;
 
 @NoArgsConstructor
@@ -19,11 +20,11 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
+    @NotNull
     private String title;
-    private String director;
     private String rating;
     private Long year;
+    private Double score;
 
     @ManyToOne
     private Director director;
@@ -39,6 +40,6 @@ public class Movie {
             foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT),
             inverseForeignKey = @ForeignKey(ConstraintMode.CONSTRAINT)
     )
-    @JsonIgnoreProperties("posts")
+    @JsonIgnoreProperties("movies")
     private Collection<Genre> genres;
 }
