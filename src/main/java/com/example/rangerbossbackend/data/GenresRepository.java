@@ -1,4 +1,4 @@
-package data;
+package com.example.rangerbossbackend.data;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
