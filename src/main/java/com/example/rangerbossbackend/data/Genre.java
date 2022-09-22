@@ -1,4 +1,4 @@
-package data;
+package com.example.rangerbossbackend.data;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
@@ -8,25 +8,24 @@ import java.util.List;
 @NoArgsConstructor @AllArgsConstructor
 @Entity
 @Table
-public class Actor {
+public class Genre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "actor_name", nullable = false)
+    @Column(name = "genre_name", nullable = false)
     private String name;
     @ManyToMany(
             fetch = FetchType.LAZY,
             cascade = {CascadeType.DETACH, CascadeType.REFRESH},
             targetEntity = Movie.class)
     @JoinTable(
-            name="movie_actor",
-            joinColumns = {@JoinColumn(name = "actor_id", nullable = false, updatable = false)},
+            name="movie_genre",
+            joinColumns = {@JoinColumn(name = "genre_id", nullable = false, updatable = false)},
             inverseJoinColumns = {@JoinColumn(name="movie_id", nullable = false, updatable = false)},
             foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT),
             inverseForeignKey = @ForeignKey(ConstraintMode.CONSTRAINT)
     )
-    @JsonIgnoreProperties("actors")
+    @JsonIgnoreProperties("genres")
     private List<Movie> relatedMovies;
 
 }
-
