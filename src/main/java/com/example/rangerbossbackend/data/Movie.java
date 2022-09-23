@@ -25,6 +25,10 @@ public class Movie {
     private String rating;
     private Long year;
     private Double score;
+    private String poster;
+
+    @Column(length = 1024)
+    private String plot;
 
     @ManyToOne
     private Director director;

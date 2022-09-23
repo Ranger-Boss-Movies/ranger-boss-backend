@@ -7,7 +7,7 @@ import java.util.List;
 @Getter @Setter @ToString
 @NoArgsConstructor @AllArgsConstructor
 @Entity
-@Table
+@Table(name = "genres")
 public class Genre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -7,12 +7,12 @@ import java.util.List;
 @Getter @Setter @ToString
 @NoArgsConstructor @AllArgsConstructor
 @Entity
-@Table
+@Table(name = "actors")
 public class Actor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "actor_name", nullable = false)
+    @Column(name = "actor_name", unique = true, nullable = false)
     private String name;
     @ManyToMany(
             fetch = FetchType.LAZY,
