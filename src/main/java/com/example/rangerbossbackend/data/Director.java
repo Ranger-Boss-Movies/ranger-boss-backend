@@ -12,7 +12,7 @@ import java.util.Collection;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table
+@Table(name = "directors")
 public class Director {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
