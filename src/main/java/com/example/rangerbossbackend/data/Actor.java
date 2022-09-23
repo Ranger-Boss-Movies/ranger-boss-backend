@@ -26,7 +26,7 @@ public class Actor {
             inverseForeignKey = @ForeignKey(ConstraintMode.CONSTRAINT)
     )
     @JsonIgnoreProperties("actors")
-    private List<Movie> relatedMovies;
+    private List<Movie> filmography;
 
 }
 

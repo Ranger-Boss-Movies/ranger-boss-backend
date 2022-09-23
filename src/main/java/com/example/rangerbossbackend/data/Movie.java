@@ -1,5 +1,6 @@
 package com.example.rangerbossbackend.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
@@ -31,6 +32,7 @@ public class Movie {
     private String plot;
 
     @ManyToOne
+    @JsonIgnoreProperties("movies")
     private Director director;
 
     @ManyToMany(
@@ -44,7 +46,7 @@ public class Movie {
             foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT),
             inverseForeignKey = @ForeignKey(ConstraintMode.CONSTRAINT)
     )
-    @JsonIgnoreProperties("movies")
+    @JsonIgnoreProperties("relatedMovies")
     private Collection<Genre> genres;
 
     @ManyToMany(
@@ -58,6 +60,6 @@ public class Movie {
             foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT),
             inverseForeignKey = @ForeignKey(ConstraintMode.CONSTRAINT)
     )
-    @JsonIgnoreProperties("movies")
+    @JsonIgnoreProperties("filmography")
     private Collection<Actor> actors;
 }
