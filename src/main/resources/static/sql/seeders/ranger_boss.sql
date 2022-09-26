@@ -57,7 +57,7 @@ VALUES
     (10,'Sport');
 
 
-INSERT INTO `movies` (`id`, `plot`, `poster`, `rating`, `score`, `title`, `year`, `director_id`)
+INSERT INTO `movies` (`id`, `plot`, `poster`, `rated`, `rating`, `title`, `year`, `director_id`)
 VALUES
     (1,'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.','https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg','R',9.3,'The Shawshank Redemption',1994,4),
     (2,'The lives of guards on Death Row are affected by one of their charges: a black man accused of child murder and rape, yet who has a mysterious gift.','https://m.media-amazon.com/images/M/MV5BMTUxMzQyNjA5MF5BMl5BanBnXkFtZTYwOTU2NTY3._V1_SX300.jpg','R',8.6,'The Green Mile',1999,4),

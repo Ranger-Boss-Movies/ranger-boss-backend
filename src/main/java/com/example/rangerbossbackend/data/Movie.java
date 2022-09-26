@@ -23,9 +23,9 @@ public class Movie {
 
     @NotNull
     private String title;
-    private String rating;
+    private String rated;
     private Long year;
-    private Double score;
+    private Double rating;
     private String poster;
 
     @Column(length = 1024)
