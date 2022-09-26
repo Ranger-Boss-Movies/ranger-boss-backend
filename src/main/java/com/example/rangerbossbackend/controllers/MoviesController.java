@@ -45,7 +45,16 @@ public class MoviesController {
         if (newMovie.getTitle() == null || newMovie.getTitle().length() < 1) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Title cannot be blank!");
         }
-        System.out.println(newMovie);
+
+        Director ourDirector = directorsRepository.findByName(newMovie.getDirector().getName());
+        if(ourDirector == null) {
+            Director newDirector = new Director();
+            newDirector.setName(ourDirector.getName());
+            directorsRepository.save(newDirector);
+            ourDirector.setId(newDirector.getId());
+        }
+        newMovie.setDirector(ourDirector);
+
         for(Genre genre : newMovie.getGenres()) {
             // find the genre id and set it
             Genre ourGenre = genresRepository.findByName(genre.getName());
@@ -58,6 +67,21 @@ public class MoviesController {
                 genre.setId(ourGenre.getId());
             }
         }
+
+        for(Actor actor : newMovie.getActors()) {
+            // find the actor id and set it
+            Actor ourActor = actorsRepository.findByName(actor.getName());
+            if(ourActor == null) {
+                Actor newActor = new Actor();
+                newActor.setName(actor.getName());
+                actorsRepository.save(newActor);
+                actor.setId(newActor.getId());
+            } else {
+                actor.setId(ourActor.getId());
+            }
+        }
+
+        System.out.println(newMovie);
 
         moviesRepository.save(newMovie);
     }
