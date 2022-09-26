@@ -45,6 +45,13 @@ public class MoviesController {
         if (newMovie.getTitle() == null || newMovie.getTitle().length() < 1) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Title cannot be blank!");
         }
+        System.out.println(newMovie);
+        for(Genre genre : newMovie.getGenres()) {
+            // find the genre id and set it
+            Genre ourGenre = genresRepository.findByName(genre.getName());
+            genre.setId(ourGenre.getId());
+        }
+
         moviesRepository.save(newMovie);
     }
 
