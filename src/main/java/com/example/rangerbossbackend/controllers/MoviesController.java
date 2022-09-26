@@ -49,7 +49,14 @@ public class MoviesController {
         for(Genre genre : newMovie.getGenres()) {
             // find the genre id and set it
             Genre ourGenre = genresRepository.findByName(genre.getName());
-            genre.setId(ourGenre.getId());
+            if(ourGenre == null) {
+                Genre newGenre = new Genre();
+                newGenre.setName(genre.getName());
+                genresRepository.save(newGenre);
+                genre.setId(newGenre.getId());
+            } else {
+                genre.setId(ourGenre.getId());
+            }
         }
 
         moviesRepository.save(newMovie);
